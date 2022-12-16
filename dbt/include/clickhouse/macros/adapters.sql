@@ -114,7 +114,7 @@
   {% endcall %}
 {% endmacro %}
 
-{% macro exchange_tables_atomic(old_relation, target_relation, structure='TABLES') %}
+{% macro exchange_tables_atomic(old_relation, target_relation) %}
   {%- call statement('exchange_tables_atomic') -%}
     EXCHANGE TABLES {{ old_relation }} AND {{ target_relation }} {{ on_cluster_clause(label="on cluster") }}
   {% endcall %}
