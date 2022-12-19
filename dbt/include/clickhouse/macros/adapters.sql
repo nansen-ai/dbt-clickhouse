@@ -115,6 +115,11 @@
 {% endmacro %}
 
 {% macro exchange_tables_atomic(old_relation, target_relation, structure='TABLES') %}
+   
+  {%- if adapter.get_clickhouse_cluster_name() is not none %}
+    {% do run_query("SYSTEM SYNC REPLICA "+target_relation.identifier) %}
+  {%- endif %}
+
   {%- call statement('exchange_tables_atomic') -%}
     EXCHANGE {{ structure }} {{ old_relation }} AND {{ target_relation }} {{ on_cluster_clause(label="on cluster") }}
   {% endcall %}
