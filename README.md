@@ -64,8 +64,8 @@ your_profile_name:
       send_receive_timeout: [300] # Timeout in seconds to receive data from the ClickHouse server
       cluster_mode: [False] # Use specific settings designed to improve operation on Replicated databases (recommended for ClickHouse Cloud)
       use_lw_deletes: [False] Use the strategy `delete+insert` as the default incremental strategy.
-      check_exchange: [True] # Validate that clickhouse support the atomic EXCHANGE TABLES command.  (Not needed for most ClickHouse versions)
-      custom_settings: [{}] # A dicitonary/mapping of custom ClickHouse settings for the connection - default is empty.
+      check_exchange: [True] # Validate that clickhouse supports the atomic EXCHANGE TABLES command.  (Not needed for most ClickHouse versions)
+      custom_settings: [{}] # A dictionary/mapping of custom ClickHouse settings for the connection - default is empty.
       
       # Native (clickhouse-driver) connection settings
       sync_request_timeout: [5] Timeout for server ping
