@@ -33,7 +33,8 @@ class ChNativeClient(ChClientWrapper):
     def get_ch_setting(self, setting_name):
         try:
             result = self._client.execute(
-                f"SELECT value FROM system.settings WHERE name = '{setting_name}'"
+                "SELECT value FROM system.settings WHERE name = %(setting_name)s",
+                {'setting_name': setting_name}
             )
         except clickhouse_driver.errors.Error as ex:
             logger.warn('Unexpected error retrieving ClickHouse server setting', ex)
